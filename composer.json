@@ -29,6 +29,7 @@
     },
     "minimum-stability": "dev",
     "bin": [
-        "bin/*"
+        "bin/xbehat/behat.bat",
+        "bin/xbehat/behat"
     ]
 }
