@@ -29,7 +29,6 @@
     },
     "minimum-stability": "dev",
     "bin": [
-        "bin/selenium",
-        "bin/xbehat"
+        "bin/*"
     ]
 }
