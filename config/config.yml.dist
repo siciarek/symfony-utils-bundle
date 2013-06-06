@@ -1,0 +1,7 @@
+# Namespaces and mapping paths
+
+#Application\FirstBundle\Namespace:
+#    path: src/Path/To/FirstBundle/Resources/config/doctrine
+#
+#Application\SecondBundle\Namespace:
+#    path: src/Path/To/SecondBundle/Resources/config/doctrine

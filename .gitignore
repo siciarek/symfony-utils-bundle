@@ -1,13 +1,47 @@
+# VCS
+.git
+
+# PHPStorm
+.idea
+.DS_Store
+
+# Eclipse
+.settings
+.buildpath
+.project
+
+/temp
+
+composer.phar
+composer.lock
+
+web/config.php
+
+vendor
+
+*~
+composer.phar
+composer.lock
+
 # Bootstrap
 app/bootstrap*
 
 # Symfony directories
-vendor/*
+/vendor
 */logs/*
 */cache/*
-web/uploads/*
-web/bundles/*
+web/uploads*
+web/bundles
+web/js
+web/css
+web/images
+web/fonts
+web/docs
+web/behat
 
 # Configuration files
 app/config/parameters.ini
 app/config/parameters.yml
+
+config/config.yml
+bin/xbehat/gherkin/i18n.json

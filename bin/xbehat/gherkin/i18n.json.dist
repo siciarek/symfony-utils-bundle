@@ -1,0 +1,16 @@
+{
+    "pl": {
+        "name":             "Polish",
+        "native":           "polski",
+        "feature":          "Funkcjonalność|Właściwość|Funkcja|Aspekt|Potrzeba biznesowa",
+        "background":       "Ustawienia środowiska|Założenia",
+        "scenario":         "Scenariusz",
+        "scenario_outline": "Szablon scenariusza",
+        "examples":         "Przykłady",
+        "given":            "Mam|Mając|Zakładając",
+        "when":             "Jeżeli|Jeśli|Kiedy|Gdy",
+        "then":             "Wtedy",
+        "and":              "Oraz|I",
+        "but":              "Ale"
+    }
+}

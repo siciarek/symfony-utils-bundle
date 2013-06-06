@@ -1,0 +1,35 @@
+{
+    "name": "siciarek/symfony-utils-bundle",
+    "type": "library",
+    "description": "Bunch of utilities for Symfony2",
+    "keywords": [
+        "symfony2",
+        "utilities",
+        "helpers",
+        "bundle"
+    ],
+    "homepage": "http://github.com/siciarek/symfony-utils-bundle.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jacek Siciarek",
+            "email": "siciarek@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-0": {
+            "Siciarek\\SymfonyUtilsBundle": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "bin": [
+        "bin/selenium",
+        "bin/xbehat"
+    ]
+}

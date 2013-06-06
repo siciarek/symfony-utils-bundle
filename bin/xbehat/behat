@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+define('BEHAT_PHP_BIN_PATH', getenv('PHP_PEAR_PHP_BIN') ?: '/usr/bin/env php');
+define('BEHAT_BIN_PATH',     __FILE__);
+define('BEHAT_VERSION',      'DEV');
+
+function includeIfExists($file)
+{
+    if (file_exists($file)) {
+        return include $file;
+    }
+}
+
+if ((!$loader = includeIfExists(__DIR__.'/../../vendor/autoload.php')) && (!$loader = includeIfExists(__DIR__.'/../../../../autoload.php'))) {
+    die(
+        'You must set up the project dependencies, run the following commands:'.PHP_EOL.
+        'curl -s http://getcomposer.org/installer | php'.PHP_EOL.
+        'php composer.phar install'.PHP_EOL
+    );
+}
+
+class BehatApplication extends \Behat\Behat\Console\BehatApplication {
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function createContainer(Symfony\Component\Console\Input\InputInterface $input)
+    {
+        $container = new Symfony\Component\DependencyInjection\ContainerBuilder();
+        $this->loadCoreExtension($container, $this->loadConfiguration($container, $input));
+        $container->setParameter("gherkin.paths.lib", __DIR__ . "/gherkin/");
+        $container->compile();
+
+        return $container;
+    }
+}
+
+$app = new \BehatApplication(BEHAT_VERSION);
+$app->run();
