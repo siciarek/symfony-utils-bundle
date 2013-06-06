@@ -2,6 +2,8 @@
 
 /**
  * Configuration file for Doctrine commandline scripts
+ *
+ * @author Jacek Siciarek <siciarek@gmail.com>
  */
 
 require_once __DIR__ . '/../app/autoload.php';
@@ -17,10 +19,16 @@ Type::addType('json', 'Sonata\Doctrine\Types\JsonType');
 
 $yaml = new Parser();
 
-$temp = $yaml->parse(file_get_contents(__DIR__ . '/config.yml'));
+$cnf = __DIR__ . '/config.yml';
+
+$temp = $yaml->parse(file_get_contents($cnf));
 $namespaces = array();
 
-foreach($temp as $namespace => $data) {
+if ($temp === null) {
+    throw new \Exception("Your namspaces config file " . $cnf . " is not properly configured.");
+}
+
+foreach ($temp as $namespace => $data) {
     $namespaces[__DIR__ . '/../' . $data["path"]] = $namespace;
 }
 
@@ -42,7 +50,7 @@ $config->setAutoGenerateProxyClasses(false);
 $config->setProxyDir(__DIR__ . '/doctrine/orm/Proxies');
 $config->setProxyNamespace('Proxies');
 
-foreach($namespaces as $key => $namespace) {
+foreach ($namespaces as $key => $namespace) {
     $alias = $namespace;
     $alias = preg_replace('/\W/', '', $alias);
     $alias = preg_replace('/Entity$/', '', $alias);
