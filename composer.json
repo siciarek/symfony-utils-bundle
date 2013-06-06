@@ -19,6 +19,7 @@
     "require": {
         "php": ">=5.3.2"
     },
+    "minimum-stability": "dev",
     "require-dev": {
 
     },
@@ -27,8 +28,10 @@
             "Siciarek\\SymfonyUtilsBundle": "src/"
         }
     },
-    "minimum-stability": "dev",
-    "bin/xbehat": [
+    "config": {
+        "bin-dir": "bin"
+    },
+    "bin": [
         "bin/xbehat/behat.bat",
         "bin/xbehat/behat"
     ]
