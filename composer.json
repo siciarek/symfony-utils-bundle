@@ -28,11 +28,7 @@
             "Siciarek\\SymfonyUtilsBundle": "src/"
         }
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "bin": [
-        "bin/xbehat/behat.bat",
-        "bin/xbehat/behat"
+        "bin/behat/xbehat"
     ]
 }
