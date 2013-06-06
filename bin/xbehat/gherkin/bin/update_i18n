@@ -7,8 +7,9 @@ $extensions = __DIR__.'/../i18n.json';
 if(file_exists($extensions)) {
     $json = file_get_contents($extensions);
     $data = json_decode($json, true);
-    $array = array_merge($array, $data);
+    if(is_array($data)) {
+        $array = array_merge($array, $data);
+    }
 }
 
 file_put_contents(__DIR__.'/../i18n.php', '<?php return '.var_export($array, true).';');
-
