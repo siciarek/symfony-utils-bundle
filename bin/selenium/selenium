@@ -1,11 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-define('SELENIUM_SERVER', __DIR__.'/selenium-server-standalone-2.33.0.jar');
+define('SELENIUM_SERVER', __DIR__ . '/selenium-server-standalone-2.33.0.jar');
 
 $drivers = array(
-    'webdriver.ie.driver' => __DIR__.'/IEDriverServer.exe',
-    'webdriver.chrome.driver' =>  __DIR__.'/chromedriver.exe',
+    'webdriver.ie.driver'     => __DIR__ . '/IEDriverServer.exe',
+    'webdriver.chrome.driver' => __DIR__ . '/chromedriver.exe',
 );
 
 $SELENIUM_SERVER_DRIVERS = '';
@@ -16,6 +16,6 @@ if (PHP_OS === 'WINNT') {
     }
 }
 
-$cmd = sprintf('java %s -jar %s', $SELENIUM_SERVER_DRIVERS, SELENIUM_SERVER);
+$cmd = sprintf('java%s -jar %s', $SELENIUM_SERVER_DRIVERS, SELENIUM_SERVER);
 
 shell_exec($cmd);
