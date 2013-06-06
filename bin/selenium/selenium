@@ -10,10 +10,11 @@ $drivers = array(
 
 $SELENIUM_SERVER_DRIVERS = '';
 
-foreach($drivers as $name => $path) {
-    $SELENIUM_SERVER_DRIVERS .= sprintf(' -D%s=%s', $name, $path);
+if (PHP_OS === 'WINNT') {
+    foreach($drivers as $name => $path) {
+        $SELENIUM_SERVER_DRIVERS .= sprintf(' -D%s=%s', $name, $path);
+    }
 }
-
 
 $cmd = sprintf('java %s -jar %s', $SELENIUM_SERVER_DRIVERS, SELENIUM_SERVER);
 
