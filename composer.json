@@ -29,6 +29,7 @@
         }
     },
     "bin": [
-        "bin/behat/xbehat"
+        "bin/behat/xbehat",
+        "bin/selenium/selenium"
     ]
 }

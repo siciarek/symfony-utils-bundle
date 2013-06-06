@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-
-DRIVERS=
-SELENIUM_SERVER=`dirname $0`/selenium-server-standalone-2.33.0.jar
-
-java $DRIVERS -jar $SELENIUM_SERVER
