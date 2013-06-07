@@ -13,9 +13,6 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Doctrine\DBAL\Types\Type;
-
-Type::addType('json', 'Sonata\Doctrine\Types\JsonType');
 
 $yaml = new Parser();
 
