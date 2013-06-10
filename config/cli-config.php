@@ -2,8 +2,6 @@
 
 /**
  * Configuration file for Doctrine commandline scripts
- *
- * @author Jacek Siciarek <siciarek@gmail.com>
  */
 
 require_once __DIR__ . '/../app/autoload.php';
@@ -15,6 +13,15 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
 $yaml = new Parser();
+
+$temp = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/config.yml'));
+$dbcnf = $temp['doctrine']['dbal'];
+
+if (array_key_exists('types', $dbcnf)) {
+    foreach ($dbcnf['types'] as $name => $class) {
+        Doctrine\DBAL\Types\Type::addType($name, $class);
+    }
+}
 
 $cnf = __DIR__ . '/config.yml';
 
@@ -43,7 +50,7 @@ $connectionOptions = array(
 
 $config = new Configuration();
 $config->setMetadataDriverImpl(new SimplifiedYamlDriver($namespaces));
-$config->setAutoGenerateProxyClasses(false);
+$config->setAutoGenerateProxyClasses(true);
 $config->setProxyDir(__DIR__ . '/doctrine/orm/Proxies');
 $config->setProxyNamespace('Proxies');
 
