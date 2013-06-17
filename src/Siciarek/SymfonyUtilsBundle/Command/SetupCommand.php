@@ -36,7 +36,7 @@ class SetupCommand extends ContainerAwareCommand
             copy($src_dir . '/config.yml.dist', $trg_dir . '/config.yml');
         }
 
-        copy($src_dir . '/cli-config.php', $trg_dir . '/cli-config.php');
+        copy($src_dir . '/cli-config.php', $trg_dir . '/../cli-config.php');
 
         $output->writeln("OK");
     }

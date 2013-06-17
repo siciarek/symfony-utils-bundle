@@ -4,7 +4,7 @@
  * Configuration file for Doctrine commandline scripts
  */
 
-require_once __DIR__ . '/../app/autoload.php';
+define('PROJECT_DIRECTORY', __DIR__);
 
 use Symfony\Component\Yaml\Parser;
 use Doctrine\ORM\Configuration;
@@ -14,7 +14,7 @@ use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
 $yaml = new Parser();
 
-$temp = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/config.yml'));
+$temp = $yaml->parse(file_get_contents(PROJECT_DIRECTORY . '/app/config/config.yml'));
 $dbcnf = $temp['doctrine']['dbal'];
 
 if (array_key_exists('types', $dbcnf)) {
@@ -23,7 +23,7 @@ if (array_key_exists('types', $dbcnf)) {
     }
 }
 
-$cnf = __DIR__ . '/config.yml';
+$cnf = PROJECT_DIRECTORY . '/config/namespaces.yml';
 
 $temp = $yaml->parse(file_get_contents($cnf));
 $namespaces = array();
@@ -33,10 +33,10 @@ if ($temp === null) {
 }
 
 foreach ($temp as $namespace => $data) {
-    $namespaces[__DIR__ . '/../' . $data["path"]] = $namespace;
+    $namespaces[PROJECT_DIRECTORY . '/' . $data["path"]] = $namespace;
 }
 
-$temp = $yaml->parse(file_get_contents(__DIR__ . '/../app/config/parameters.yml'));
+$temp = $yaml->parse(file_get_contents(PROJECT_DIRECTORY . '/app/config/parameters.yml'));
 $cnf = $temp["parameters"];
 
 $connectionOptions = array(
@@ -51,7 +51,7 @@ $connectionOptions = array(
 $config = new Configuration();
 $config->setMetadataDriverImpl(new SimplifiedYamlDriver($namespaces));
 $config->setAutoGenerateProxyClasses(true);
-$config->setProxyDir(__DIR__ . '/doctrine/orm/Proxies');
+$config->setProxyDir(PROJECT_DIRECTORY . '/config/doctrine/orm/Proxies');
 $config->setProxyNamespace('Proxies');
 
 foreach ($namespaces as $key => $namespace) {
@@ -61,5 +61,9 @@ foreach ($namespaces as $key => $namespace) {
     $config->addEntityNamespace($alias, $namespace);
 }
 
-$entityManager = EntityManager::create($connectionOptions, $config);
-return ConsoleRunner::createHelperSet($entityManager);
+$em = EntityManager::create($connectionOptions, $config);
+
+$helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
+    'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em->getConnection()),
+    'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($em)
+));
