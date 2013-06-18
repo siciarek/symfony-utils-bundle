@@ -50,7 +50,7 @@ $connectionOptions = array(
 
 $config = new Configuration();
 $config->setMetadataDriverImpl(new SimplifiedYamlDriver($namespaces));
-$config->setAutoGenerateProxyClasses(true);
+$config->setAutoGenerateProxyClasses(false);
 $config->setProxyDir(PROJECT_DIRECTORY . '/config/doctrine/orm/Proxies');
 $config->setProxyNamespace('Proxies');
 
@@ -62,6 +62,12 @@ foreach ($namespaces as $key => $namespace) {
 }
 
 $em = EntityManager::create($connectionOptions, $config);
+
+if (array_key_exists('mapping_types', $dbcnf)) {
+    foreach ($dbcnf['mapping_types'] as $key => $value) {
+        $em->getConnection()->getDatabasePlatform()->registerDoctrineTypeMapping($key, $value);
+    }
+}
 
 $helperSet = new \Symfony\Component\Console\Helper\HelperSet(array(
     'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($em->getConnection()),
