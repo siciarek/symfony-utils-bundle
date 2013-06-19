@@ -50,7 +50,7 @@ $connectionOptions = array(
 
 $config = new Configuration();
 $config->setMetadataDriverImpl(new SimplifiedYamlDriver($namespaces));
-$config->setAutoGenerateProxyClasses(false);
+$config->setAutoGenerateProxyClasses(true);
 $config->setProxyDir(PROJECT_DIRECTORY . '/config/doctrine/orm/Proxies');
 $config->setProxyNamespace('Proxies');
 
