@@ -10,6 +10,14 @@
 namespace Siciarek\SymfonyUtilsBundle\Utils;
 
 class Debug {
+
+    /**
+     * Debug pretty printer
+     *
+     * @param $var
+     * @param bool $echo
+     * @return string
+     */
     public static function dump($var, $echo = true) {
         $output = sprintf('<pre>%s</pre>', \Doctrine\Common\Util\Debug::dump($var));
         if($echo === true) {
