@@ -18,11 +18,18 @@ class Debug {
      * @param bool $echo
      * @return string
      */
-    public static function dump($var, $echo = true) {
-        $output = sprintf('<pre>%s</pre>', \Doctrine\Common\Util\Debug::dump($var));
+    public static function dump($var, $echo = true, $pre = true) {
+
+        ob_start();
+        \Doctrine\Common\Util\Debug::dump($var);
+        $dump = ob_get_clean();
+
+        $output = $pre === true ? sprintf('<pre>%s</pre>', $dump) : $dump;
+
         if($echo === true) {
             echo $output;
         }
+
         return $output;
     }
 }
