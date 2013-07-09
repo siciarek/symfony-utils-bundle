@@ -1,0 +1,11 @@
+---
+parameters:
+    symfony.utils.twig.extension.class: Siciarek\SymfonyUtilsBundle\Twig\Extension\SiciarekSymfonyUtilsExtension
+
+services:
+
+    symfony.utils.twig.extension:
+        class: %symfony.utils.twig.extension.class%
+        tags:
+            -
+                name:   twig.extension

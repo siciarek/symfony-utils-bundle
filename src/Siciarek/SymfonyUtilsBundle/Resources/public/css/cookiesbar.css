@@ -1,0 +1,55 @@
+div#cookies-bar {
+    border-top: 1px solid #999999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100px;
+    background-color: rgba(255, 255, 224, .93);
+    width: 100%;
+    text-align: center;
+    padding-top: 14px;
+}
+
+div#cookies-bar div.info {
+    display: inline-block;
+    width: 988px;
+    color: #999999;
+    margin: auto;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 1em;
+    min-height: 70px;
+    line-height: 1.5em;
+    padding-left: 80px;
+    background-repeat: no-repeat;
+    background-image: url(/bundles/siciareksymfonyutils/images/cookiesbar_info.png);
+}
+
+div#cookies-bar div.info a {
+    text-decoration: none;
+    background-image: none;
+}
+
+div#cookies-bar div.info a:hover {
+    color: darkred;
+}
+
+div#cookies-bar div.info a:after {
+    content: " ►"
+}
+
+div#cookies-bar a.close {
+    margin-left: 10px;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+    width: 26px;
+    height: 26px;
+    background-image: url(/bundles/siciareksymfonyutils/images/cookiesbar_close.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+div#cookies-bar a.close:hover {
+    background-position: -26px 0;
+}
