@@ -1,4 +1,5 @@
 div#cookies-bar {
+    display: none;
     border-top: 1px solid #999999;
     position: fixed;
     bottom: 0;

@@ -24,6 +24,13 @@ class Configuration implements ConfigurationInterface
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
 
+
+        /*
+         * siciarek_symfony_utils:
+         *     stylesheet: /bundles/siciareksymfonyutils/css/cookiesbar.css
+         *     cookie_name: cookies_accepted
+         */
+
         return $treeBuilder;
     }
 }

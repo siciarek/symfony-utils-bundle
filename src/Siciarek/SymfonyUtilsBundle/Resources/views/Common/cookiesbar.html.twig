@@ -1,14 +1,17 @@
-{% if app.request.cookies.has('cookies_accepted') == false %}
+{% set stylesheet  = '/bundles/siciareksymfonyutils/css/cookiesbar.css' %}
+{% set cookie_name = 'cookies_accepted' %}
+
+{% if app.request.cookies.has(cookie_name) == false %}
 
     {% spaceless %}
-    <div id="cookies-bar">
-        <div class="info">{{ 'app.privacy_policy'|trans({__url__:privacy_policy_url})|raw }}</div>
-        <a onclick="acceptCookies()" title="{{ 'Close'|trans }}" class="close" href="javascript:void(null)">&nbsp;</a>
-    </div>
+        <div id="cookies-bar">
+            <div class="info">{{ 'app.privacy_policy'|trans({__url__:privacy_policy_url}, 'SiciarekSymfonyUtilsBundle')|raw }}</div>
+            <a onclick="acceptCookies()" class="close" href="javascript:void(null)">&nbsp;</a>
+        </div>
     {% endspaceless %}
 
     <style type="text/css">
-        @import '/bundles/siciareksymfonyutils/css/cookiesbar.css';
+        @import '{{ stylesheet }}';
     </style>
 
     <script type="text/javascript">
@@ -35,12 +38,19 @@
             document.cookie = [cookie, expires, path].join(';');
         }
 
+        function checkCookies() {
+            if(document.cookie.match(/{{ cookie_name }}=1/) === null) {
+                document.getElementById('cookies-bar').style.display = 'inline-block';
+            }
+        }
+
         function acceptCookies() {
-            createCookie('cookies_accepted');
+            createCookie('{{ cookie_name }}');
             element = document.getElementById('cookies-bar');
             element.parentNode.removeChild(element);
         }
 
+        window.onload = checkCookies;
     </script>
 
 {% endif %}
