@@ -87,7 +87,7 @@ Default values
 
 siciarek_symfony_utils:
     accept_cookies:
-        enabled: true
+        enabled: false
         stylesheet: /bundles/siciareksymfonyutils/css/cookiesbar.css
         cookie_name: cookies_accepted
         privacy_policy_url: privacy-policy
