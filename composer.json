@@ -3,6 +3,8 @@
     "type": "library",
     "description": "Bunch of utilities for Symfony2",
     "keywords": [
+        "cookie",
+        "privacy policy",
         "symfony2",
         "utilities",
         "helpers",
