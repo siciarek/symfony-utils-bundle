@@ -13,7 +13,8 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
     /**
      * Constructor
      */
-    public function __construct(\Symfony\Component\DependencyInjection\ContainerInterface $container) {
+    public function __construct(\Symfony\Component\DependencyInjection\ContainerInterface $container)
+    {
         $this->config = $container->getParameter('siciarek.symfony.utils.config');
     }
 
@@ -32,9 +33,7 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
      */
     public function getFilters()
     {
-        return array(
-
-        );
+        return array();
     }
 
     /**
@@ -50,7 +49,22 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
     /**
      * Cookies acceptance bar
      */
-    public function accept_cookies(\Twig_Environment $twig, $url = 'privacy-policy') {
-        return $twig->render('SiciarekSymfonyUtilsBundle:Common:cookiesbar.html.twig', array('privacy_policy_url' => $url));
+    public function accept_cookies(\Twig_Environment $twig, $url = null)
+    {
+        $cnf = $this->config['accept_cookies'];
+
+        if($cnf['enabled'] === false) {
+            return '';
+        }
+
+        $url = $url === null ? $cnf['privacy_policy_url'] : $url;
+
+        $params = array(
+            'stylesheet' => $cnf['stylesheet'],
+            'cookie_name' => $cnf['cookie_name'],
+            'privacy_policy_url' => $url,
+        );
+
+        return $twig->render($cnf['template'], $params);
     }
 }

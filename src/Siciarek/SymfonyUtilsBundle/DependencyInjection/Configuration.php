@@ -20,16 +20,16 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('siciarek_symfony_utils');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
-
-
-        /*
-         * siciarek_symfony_utils:
-         *     stylesheet: /bundles/siciareksymfonyutils/css/cookiesbar.css
-         *     cookie_name: cookies_accepted
-         */
+        $rootNode
+            ->addDefaultsIfNotSet()->children()
+            ->arrayNode('accept_cookies')->addDefaultsIfNotSet()->children()
+                ->booleanNode('enabled')->defaultTrue()->end()
+                ->scalarNode('cookie_name')->defaultValue('cookies_accepted')->cannotBeEmpty()->end()
+                ->scalarNode('stylesheet')->defaultValue('/bundles/siciareksymfonyutils/css/cookiesbar.css')->cannotBeEmpty()->end()
+                ->scalarNode('privacy_policy_url')->defaultValue('privacy-policy')->cannotBeEmpty()->end()
+                ->scalarNode('template')->defaultValue('SiciarekSymfonyUtilsBundle:Common:cookiesbar.html.twig')->cannotBeEmpty()->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
