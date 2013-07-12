@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()->children()
             ->arrayNode('accept_cookies')->addDefaultsIfNotSet()->children()
-                ->booleanNode('enabled')->defaultTrue()->end()
+                ->booleanNode('enabled')->defaultFalse()->end()
                 ->scalarNode('cookie_name')->defaultValue('cookies_accepted')->cannotBeEmpty()->end()
                 ->scalarNode('stylesheet')->defaultValue('/bundles/siciareksymfonyutils/css/cookiesbar.css')->cannotBeEmpty()->end()
                 ->scalarNode('privacy_policy_url')->defaultValue('privacy-policy')->cannotBeEmpty()->end()
