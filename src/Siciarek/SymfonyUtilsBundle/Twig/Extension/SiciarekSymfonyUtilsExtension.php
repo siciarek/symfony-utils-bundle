@@ -2,13 +2,21 @@
 
 namespace Siciarek\SymfonyUtilsBundle\Twig\Extension;
 
-use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
 class SiciarekSymfonyUtilsExtension extends \Twig_Extension
 {
+    protected $config = array();
+
+    /**
+     * Constructor
+     */
+    public function __construct(\Symfony\Component\DependencyInjection\ContainerInterface $container) {
+        $this->config = $container->getParameter('siciarek.symfony.utils.config');
+    }
+
     /**
      * Returns the name of the extension.
      *
@@ -16,7 +24,7 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'application_main_twig_extension';
+        return 'siciarek_symfony_utils_twig_extension';
     }
 
     /**
@@ -42,7 +50,7 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
     /**
      * Cookies acceptance bar
      */
-    public function accept_cookies(\Twig_Environment $twig, $url = 'xyz') {
+    public function accept_cookies(\Twig_Environment $twig, $url = 'privacy-policy') {
         return $twig->render('SiciarekSymfonyUtilsBundle:Common:cookiesbar.html.twig', array('privacy_policy_url' => $url));
     }
 }

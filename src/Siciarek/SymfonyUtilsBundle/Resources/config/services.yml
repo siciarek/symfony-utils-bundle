@@ -6,6 +6,7 @@ services:
 
     symfony.utils.twig.extension:
         class: %symfony.utils.twig.extension.class%
+        arguments: [ @service_container ]
         tags:
             -
                 name:   twig.extension
