@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SiciarekSymfonyUtilsExtension extends \Twig_Extension
 {
+    protected $container;
     protected $config = array();
 
     /**
@@ -15,6 +16,7 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
      */
     public function __construct(\Symfony\Component\DependencyInjection\ContainerInterface $container)
     {
+        $this->container = $container;
         $this->config = $container->getParameter('siciarek.symfony.utils.config');
     }
 
@@ -42,12 +44,35 @@ class SiciarekSymfonyUtilsExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
+            'photogallery' => new \Twig_Function_Method($this, 'photogallery', array('needs_environment' => true, 'is_safe' => array('html'))),
             'accept_cookies' => new \Twig_Function_Method($this, 'accept_cookies', array('needs_environment' => true, 'is_safe' => array('html'))),
         );
     }
 
+
+    /**
+     * SonataMediaBundle Gallery helper
+     * @param \Twig_Environment $twig
+     * @param string $service
+     * @return null|string
+     */
+    public function photogallery(\Twig_Environment $twig, $service = 'sonata.media.manager.gallery') {
+
+        // TODO: template and service id + fancybox settings to config
+
+        if($this->container->has($service) === false) {
+            return null;
+        }
+
+        $galleries = $this->container->get($service)->findBy(array('enabled' => true));
+        return $twig->render('SiciarekSymfonyUtilsBundle:Common:photogallery.html.twig', array('galleries' => $galleries));
+    }
+
+
     /**
      * Cookies acceptance bar
+     * @param \Twig_Environment $twig
+     * @return string
      */
     public function accept_cookies(\Twig_Environment $twig, $url = null)
     {
