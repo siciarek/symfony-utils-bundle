@@ -1,3 +1,6 @@
+photogallery:
+    header: 'Galeria fotografii|Galerie fotografii'
+
 app:
     privacy_policy: >
         Używamy plików cookies, aby ułatwić Ci korzystanie z naszego serwisu oraz do celów statystycznych.

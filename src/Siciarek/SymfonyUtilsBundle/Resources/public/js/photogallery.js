@@ -1,44 +1,38 @@
-jQuery(document).ready(function ($) {
+var fancyboxConfig = {
 
-    var playSpeed = 3000;
-    var changeSpeed = 500;
-    var changeEffect = 'fade';
+    playSpeed: 3000,
 
-    $('ul.photogallery a').fancybox({
-        playSpeed: playSpeed,
+    openEffect: 'fade',
+    openSpeed: 500,
 
-        openEffect: changeEffect,
-        openSpeed: changeSpeed,
+    closeEffect: 'fade',
+    closeSpeed: 500,
 
-        closeEffect: changeEffect,
-        closeSpeed: changeSpeed,
+    prevEffect: 'fade',
+    prevSpeed: 500,
 
-        prevEffect: changeEffect,
-        prevSpeed: changeSpeed,
+    nextEffect: 'fade',
+    nextSpeed: 500,
 
-        nextEffect: changeEffect,
-        nextSpeed: changeSpeed,
+    closeBtn: false,
+    nextClick: true,
+    mouseWheel: true,
 
-        closeBtn: false,
-        nextClick: true,
-        mouseWheel: true,
+    helpers: {
+        title: null
+    },
 
-        helpers: {
-            title: null
+    keys: {
+        next: {
+            32: 'left', // space
+            13: 'left', // enter
+            34: 'up',   // page down
+            39: 'left', // right arrow
+            40: 'up'    // down arrow
         },
 
-        keys: {
-            next: {
-                32: 'left', // space
-                13: 'left', // enter
-                34: 'up',   // page down
-                39: 'left', // right arrow
-                40: 'up'    // down arrow
-            },
+        play: [83] // letter "s" - start/stop slideshow
+    },
 
-            play: [83] // letter "s" - start/stop slideshow
-        },
-
-        padding: 0
-    });
-});
+    padding: 0
+};

@@ -1,3 +1,6 @@
+photogallery:
+    header: 'Photo gallery|Photo galleries'
+
 app:
     privacy_policy: >
         We use cookies to improve our service to better meet your expectations and for statistical purposes.

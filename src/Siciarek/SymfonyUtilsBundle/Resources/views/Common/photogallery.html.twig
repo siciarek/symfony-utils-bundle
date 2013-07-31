@@ -1,6 +1,6 @@
 {% if galleries|length > 1 %}
 
-    <h1>{{ 'photogallery.header'|transchoice(galleries|length) }}</h1>
+    <h1>{{ 'photogallery.header'|transchoice(galleries|length, {}, 'SiciarekSymfonyUtilsBundle') }}</h1>
 
     {% for gallery in galleries %}
         {% if galleries|length > 1 %}
@@ -24,5 +24,11 @@
     <script type="text/javascript" src="{{ asset('bundles/uran1980fancybox/js/fancybox/lib/jquery.mousewheel-3.0.6.pack.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/uran1980fancybox/js/fancybox/source/jquery.fancybox.pack.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/siciareksymfonyutils/js/photogallery.js') }}"></script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('ul.photogallery a').fancybox(fancyboxConfig);
+        });
+    </script>
 
 {% endif %}
