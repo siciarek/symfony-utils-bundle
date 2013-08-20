@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-define('SELENIUM_SERVER', __DIR__ . '/selenium-server-standalone-2.33.0.jar');
+define('SELENIUM_SERVER', __DIR__ . '/selenium-server-standalone-2.35.0.jar');
 
 $drivers = array(
     'webdriver.ie.driver'     => __DIR__ . '/IEDriverServer.exe',
