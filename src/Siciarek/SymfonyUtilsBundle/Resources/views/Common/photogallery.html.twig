@@ -1,23 +1,25 @@
-{% if galleries|length > 1 %}
+{% if galleries|length > 0 %}
 
     <h1>{{ 'photogallery.header'|transchoice(galleries|length, {}, 'SiciarekSymfonyUtilsBundle') }}</h1>
 
     {% for gallery in galleries %}
-        {% if galleries|length > 1 %}
-            <h2>{{ gallery }}</h2>
-        {% endif %}
+        {% if gallery.enabled and gallery.GalleryHasMedias|length > 0 %}
+            {% spaceless %}
 
-        {% spaceless %}
-            <ul class="photogallery">
-                {% for galleryHasMedia in gallery.GalleryHasMedias %}
-                    <li>
-                        <a href="{% path galleryHasMedia.media, 'big' %}" rel="group">
-                            {% thumbnail galleryHasMedia.media, gallery.defaultFormat %}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endspaceless %}
+                <h2>{{ gallery }}</h2>
+
+                <ul class="photogallery">
+                    {% for galleryHasMedia in gallery.GalleryHasMedias %}
+                        <li>
+                            <a href="{% path galleryHasMedia.media, 'big' %}" rel="group">
+                                {% thumbnail galleryHasMedia.media, 'small' %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {% endspaceless %}
+        {% endif %}
     {% endfor %}
 
     <link rel="stylesheet" href="{{ asset('bundles/uran1980fancybox/js/fancybox/source/jquery.fancybox.css') }}" type="text/css" media="screen"/>
