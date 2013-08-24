@@ -2,8 +2,9 @@
 
     {% spaceless %}
         <div id="cookies-bar">
-            <div class="info">{{ 'app.privacy_policy'|trans({__url__:privacy_policy_url}, 'SiciarekSymfonyUtilsBundle')|raw }}</div>
-            <a onclick="acceptCookies()" class="close" href="javascript:void(null)">&nbsp;</a>
+            <div class="info"><p>{{ 'app.privacy_policy'|trans({__url__:privacy_policy_url}, 'SiciarekSymfonyUtilsBundle')|raw }}</p>
+                <a onclick="acceptCookies()" class="close-bar" href="javascript:void(null)">&nbsp;</a>
+            </div>
         </div>
     {% endspaceless %}
 

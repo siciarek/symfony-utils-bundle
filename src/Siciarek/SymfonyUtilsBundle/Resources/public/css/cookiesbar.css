@@ -4,11 +4,11 @@ div#cookies-bar {
     position: fixed;
     bottom: 0;
     left: 0;
-    height: 100px;
-    background-color: rgba(255, 255, 224, .93);
+    height: 90px;
+    background-color: rgba(240, 240, 240, .93);
     width: 100%;
     text-align: center;
-    padding-top: 14px;
+    padding-top: 12px;
 }
 
 div#cookies-bar div.info {
@@ -18,9 +18,7 @@ div#cookies-bar div.info {
     margin: auto;
     text-align: left;
     font-family: sans-serif;
-    font-size: 1em;
     min-height: 70px;
-    line-height: 1.5em;
     padding-left: 80px;
     background-repeat: no-repeat;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAC7ElEQVR4Xu2b0XGbQBCG1xq9ow5ECeoA/KJXkQoCHagESogrEK4g6FUvhgqsdCBVYKiA8PBPNijDWCfvnk45/pl9YKyB3c97d3vL8dR1HfmsOfU6HA6kpGVvcW8rWAgb0wl2hFW9nUlB6/UaAHSCTnpLEbSJQlhMEEAUvZXCMMQBRL3lcF5MgPgDVuEZNQlpRr3quv5q4G9wLiZFAW6F50UyAG5X0NvP8cD1QeD5wT0AbDBZJXRfJfBjYxPADhPSgtzQAv7stAEEGHspuakU/gUaAALRsa4/NwRyADj4FT2GVgxBBkApHHzzp16A4boRhlBKFEI74bQ/IuCWhqq50BGDHcP/7NYM2AhPeM1I8BC1gNMIT4ybWwAEqL8llQ+CH4eQk6AQR2AKoFBY5yuD30nXCYUJgEipwvtl8DuNijG6FkBOOloa/E5D+TUAIq1ix+C+ms+PRgDo/PfN723fh9k/7Ss9hZ9tWPD3ULlUXo4BSCxtWN4v12Zcv1vaaCVjlWBqsVYv77xrfBlkQBRFSzjmg1YYBgzAoW1uA1MWxztnKip6InN9WMqCV84At9J/YQkADwHFpecNndvv5JQ43rkygJiXHtriunUJwMzy7JuSY5qRXSW+A4h9B0BuApgATABO5JdOFwAmAEfyShzvBIB78V6pujwjdAYVX9L/zABYBfmhYqwOKMkPlWMAzh7MBXzy9KIpSlDuRF9QT/lnByVrxSxorgS8VYJQIb6B5iOUqjs2RV9hf6uz83KUs6D8Dye+2uSMUNrbSaBD2zkyp6Sm2+EWEB5eiKM1AgDtH704gv/7rzREsketDeB3JtERSh5wn3CE3yQAAOf3lCFoHMaUATCEULmf9hy8HACG8OzwxFjAv1a7K5xhfDXkhhr4k1lri2NpCR2oGEv4sbf+XgCp9o3nBvtjHc9v7/1ipMbYAwgrgT8LfTvI/QApEEjJreCyecT9Qg7cxS9Hh52lF5ij3w6zfP96fHo5+hufHLy2PWnfhgAAAABJRU5ErkJggg==);
@@ -29,6 +27,7 @@ div#cookies-bar div.info {
 div#cookies-bar div.info a {
     text-decoration: none;
     background-image: none;
+    color: #222222;
 }
 
 div#cookies-bar div.info a:hover {
@@ -39,10 +38,18 @@ div#cookies-bar div.info a:after {
     content: " ►"
 }
 
-div#cookies-bar a.close {
+div#cookies-bar div.info p {
+    float: left;
+    width: 750px;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+div#cookies-bar div.info a.close-bar {
     margin-left: 10px;
     text-decoration: none;
     display: inline-block;
+    float: right;
     vertical-align: top;
     width: 26px;
     height: 26px;
@@ -51,6 +58,10 @@ div#cookies-bar a.close {
     background-position: 0 0;
 }
 
-div#cookies-bar a.close:hover {
+div#cookies-bar div.info a.close-bar:after {
+    content: "";
+}
+
+div#cookies-bar div.info a.close-bar:hover {
     background-position: -26px 0;
 }
