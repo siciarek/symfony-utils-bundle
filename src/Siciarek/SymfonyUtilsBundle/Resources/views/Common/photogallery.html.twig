@@ -11,7 +11,7 @@
                 <ul class="photogallery">
                     {% for galleryHasMedia in gallery.GalleryHasMedias %}
                         <li>
-                            <a href="{% path galleryHasMedia.media, 'big' %}" rel="group">
+                            <a class="thumbnail" href="{% path galleryHasMedia.media, 'big' %}" rel="group">
                                 {% thumbnail galleryHasMedia.media, 'small' %}
                             </a>
                         </li>
