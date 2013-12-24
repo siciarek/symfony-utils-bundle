@@ -24,6 +24,17 @@
     },
     "minimum-stability": "dev",
     "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "behat/behat": "*",
+        "behat/mink": "*",
+
+        "behat/symfony2-extension": "*",
+        "behat/mink-extension": "*",
+        "behat/mink-browserkit-driver": "*",
+        "behat/mink-selenium2-driver": "*",
+        "behat/mink-sahi-driver": "*",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-zombie-driver": "*"
 
     },
     "autoload": {
