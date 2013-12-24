@@ -20,10 +20,7 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "uran1980/fancybox-bundle": "*"
-    },
-    "minimum-stability": "dev",
-    "require-dev": {
+        "uran1980/fancybox-bundle": "*",
         "phpunit/phpunit": "3.7.*",
         "behat/behat": "*",
         "behat/mink": "*",
@@ -35,7 +32,10 @@
         "behat/mink-sahi-driver": "*",
         "behat/mink-goutte-driver": "*",
         "behat/mink-zombie-driver": "*"
-
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        
     },
     "autoload": {
         "psr-0": {
